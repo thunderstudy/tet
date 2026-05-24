@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPTET Varg 2 - Social Studies Syllabus | ThunderStudy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: #1a5276;
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 10px 40px rgba(26, 82, 118, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.4em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header h2 {
+            font-size: 1.5em;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.85;
+            font-style: italic;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Subject Cards */
+        .subject-section {
+            background: white;
+            margin: 30px 0;
+            border-radius: 16px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .subject-header {
+            padding: 25px 35px;
+            color: white;
+            font-size: 1.5em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .subject-header .icon {
+            font-size: 1.3em;
+        }
+
+        .political { background-color: #2e86ab; }
+        .geography { background-color: #27ae60; }
+        .history { background-color: #c0392b; }
+        .economics { background-color: #8e44ad; }
+
+        .units-container {
+            padding: 20px 35px 30px;
+        }
+
+        .unit {
+            border-left: 4px solid;
+            margin: 20px 0;
+            padding: 20px 25px;
+            background: #fafbfc;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .political .unit { border-left-color: #2e86ab; }
+        .geography .unit { border-left-color: #27ae60; }
+        .history .unit { border-left-color: #c0392b; }
+        .economics .unit { border-left-color: #8e44ad; }
+
+        .unit-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .unit-badge {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 700;
+        }
+
+        .unit-content {
+            font-size: 1em;
+            color: #444;
+        }
+
+        .unit-content ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .unit-content ul li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .unit-content ul ul {
+            margin-top: 6px;
+        }
+
+        .unit-content ul ul li {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .sub-list {
+            list-style-type: circle;
+            margin-left: 15px !important;
+        }
+
+        .sub-list li {
+            font-size: 0.95em;
+        }
+
+        .arrow-list {
+            list-style: none !important;
+            margin-left: 0 !important;
+        }
+
+        .arrow-list li {
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .arrow-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #2e86ab;
+        }
+
+        .geography .arrow-list li::before { color: #27ae60; }
+        .history .arrow-list li::before { color: #c0392b; }
+        .economics .arrow-list li::before { color: #8e44ad; }
+
+        /* Summary Stats */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 35px;
+            background: white;
+            margin: 30px 0;
+            border-radius: 16px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px 30px;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1a5276;
+        }
+
+        .stat-label {
+            font-size: 0.95em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .footer strong {
+            color: #555;
+        }
+
+        /* Print Styles */
+        @media print {
+            .header { border-radius: 0; box-shadow: none; }
+            .subject-section { box-shadow: none; border: 1px solid #ddd; }
+            .stats-bar { box-shadow: none; border: 1px solid #ddd; }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.7em; }
+            .header h2 { font-size: 1.1em; }
+            .units-container { padding: 15px 20px; }
+            .unit { padding: 15px 18px; }
+            .stats-bar { gap: 15px; }
+            .stat-number { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>MPTET Varg 2</h1>
+        <h2>Social Studies - Detailed Syllabus</h2>
+        <p class="subtitle">By ThunderStudy</p>
+        <div class="badge">COMPLETE SYLLABUS</div>
+    </div>
+
+    <div class="container">
+
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">20</div>
+                <div class="stat-label">Total Units</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Subjects</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Units Each</div>
+            </div>
+        </div>
+
+        <!-- POLITICAL SCIENCE -->
+        <div class="subject-section">
+            <div class="subject-header political">
+                <span class="icon">&#9733;</span>
+                <span>POLITICAL SCIENCE (Units 1-5)</span>
+            </div>
+            <div class="units-container">
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 1</span>
+                        Political Theory
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Understanding of political theory - meaning, definition, importance</li>
+                            <li>Political philosophy and theory, introduction to ideologies</li>
+                            <li>Concept of State - Meaning, Definition, Importance</li>
+                            <li>Elements of State</li>
+                            <li>Various Theories of Origin of State</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 2</span>
+                        Basic Political Concepts
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li><strong>Basic Political Concepts:</strong>
+                                <ul class="sub-list">
+                                    <li>Freedom</li>
+                                    <li>Equality</li>
+                                    <li>Social Justice</li>
+                                    <li>Rights</li>
+                                </ul>
+                            </li>
+                            <li>Democracy and diversity - meaning, features, similarities</li>
+                            <li>Dissimilarities and divisions</li>
+                            <li>Harmony and conflict among diversities</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 3</span>
+                        Constitution of India & Legislature
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li><strong>Constitution of India:</strong> Need, formation, process of making, purpose, sources, features</li>
+                            <li>Fundamental Rights, Fundamental Duties</li>
+                            <li>Policy Directive Principles</li>
+                            <li>Constitution Amendment Process</li>
+                            <li><strong>Central Legislature:</strong>
+                                <ul class="sub-list">
+                                    <li>Parliament of India - Constitution and functions of the two houses and comparison</li>
+                                    <li>Functions of the Speaker of the Lok Sabha</li>
+                                    <li>Legislative process of the Parliament</li>
+                                </ul>
+                            </li>
+                            <li><strong>State Legislature:</strong>
+                                <ul class="sub-list">
+                                    <li>Legislative Assembly - Constitution and functions</li>
+                                    <li>Legislative Council - Formation and work</li>
+                                </ul>
+                            </li>
+                            <li>Federalism - Relation between the Centre and the States</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 4</span>
+                        Executive, Judiciary & Local Government
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li><strong>Central Executive:</strong>
+                                <ul class="sub-list">
+                                    <li>President - Election, work and Powers</li>
+                                    <li>Prime Minister - Election, work and Powers</li>
+                                    <li>Council of Ministers - Formation, Role and Functions</li>
+                                </ul>
+                            </li>
+                            <li><strong>State Executive:</strong>
+                                <ul class="sub-list">
+                                    <li>Governor</li>
+                                    <li>Chief Minister - Election, work and Powers</li>
+                                    <li>Council of Ministers - Formation, Role and Functions</li>
+                                </ul>
+                            </li>
+                            <li><strong>Judiciary:</strong> Supreme Court, High Court - Establishment, Powers and Jurisdiction of Central and State Judiciary</li>
+                            <li><strong>Local Government:</strong> 73rd and 74th Constitutional Amendment</li>
+                            <li>National and State Human Rights Commission</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 5</span>
+                        Elections, Political Parties & Planning
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Elections in India - formation of Election Commission, functions, election process, reforms, challenges</li>
+                            <li>Role of women in elections</li>
+                            <li>Various political parties - national and regional political parties</li>
+                            <li>Pressure groups and interest groups</li>
+                            <li>India and its neighboring countries</li>
+                            <li>Regional Cooperation Organization</li>
+                            <li>Planning (Five Year Plans) and NITI Aayog in India</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- GEOGRAPHY -->
+        <div class="subject-section">
+            <div class="subject-header geography">
+                <span class="icon">&#9733;</span>
+                <span>GEOGRAPHY (Units 6-10)</span>
+            </div>
+            <div class="units-container">
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 6</span>
+                        India - Size, Location & Physical Features
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Location, size, neighboring countries of India and the world</li>
+                            <li><strong>Geographical distribution:</strong>
+                                <ul class="sub-list">
+                                    <li>Himalayan mountain range</li>
+                                    <li>Northern plains</li>
+                                    <li>Peninsular plateau</li>
+                                    <li>Indian desert</li>
+                                    <li>Coastal plain</li>
+                                    <li>Islands</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 7</span>
+                        Drainage and Climate
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li><strong>Drainage System in India:</strong>
+                                <ul class="sub-list">
+                                    <li>Himalayan Rivers</li>
+                                    <li>Indus River System</li>
+                                    <li>Ganga River System</li>
+                                    <li>Brahmaputra River System</li>
+                                    <li>Peninsular Rivers:
+                                        <ul>
+                                            <li>Narmada River Basin</li>
+                                            <li>Tapi River Basin</li>
+                                            <li>Godavari River Basin</li>
+                                            <li>Mahanadi River Basin</li>
+                                            <li>Krishna River Basin</li>
+                                            <li>Kaveri River Basin</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Lakes, importance of rivers in economy, river pollution</li>
+                            <li><strong>Climate:</strong> Climatic control, Climate of India, Indian Monsoon</li>
+                            <li>Arrival and withdrawal of Monsoon, Seasons</li>
+                            <li>Distribution of rainfall</li>
+                            <li>Symbol of Monsoon Unity</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 8</span>
+                        Natural Vegetation, Wildlife and Population
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Introduction, causes of diversity of flora and fauna</li>
+                            <li>Types of vegetation and conservation</li>
+                            <li>Wildlife and conservation, wildlife sanctuary</li>
+                            <li>Population - Introduction, census, population size and distribution</li>
+                            <li>Population Density in India</li>
+                            <li>Process of Population Growth and Change</li>
+                            <li>Age Structure, Sex Ratio, Literacy Rate</li>
+                            <li>Occupational Structure, Health, Adolescent Population</li>
+                            <li>National Population Policy 2000</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 9</span>
+                        Resources and Development
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li><strong>Resources and Plans:</strong> Land Resources in India, Major Plans, Resource Conservation</li>
+                            <li><strong>Land Resources:</strong> Land use in India, degradation and conservation measures, classification of soil as a resource, soil erosion and conservation</li>
+                            <li><strong>Forest and Wildlife Resources:</strong> Conservation of forest and wildlife in India, types of forests, types and distribution of wildlife, resource community and conservation</li>
+                            <li><strong>Water Resources:</strong> Water Scarcity, Water Conservation and Management, Multipurpose River Projects, Integrated Water Resources Management, Rain Water Harvesting</li>
+                            <li><strong>Agriculture:</strong> Types of agriculture, major crops, other food crops, technical and institutional reforms, food security</li>
+                            <li><strong>Mineral Resources:</strong> Distribution of mineral resources, metallic and non-metallic minerals, conventional and non-conventional energy resources, conservation of energy resources</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 10</span>
+                        Manufacturing Industry and Transport
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Importance of manufacturing industries</li>
+                            <li>Agro based industries</li>
+                            <li>Mineral based industries</li>
+                            <li>Cement industries</li>
+                            <li>Industrial pollution</li>
+                            <li>Causes of environmental degradation and its remedies</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- HISTORY -->
+        <div class="subject-section">
+            <div class="subject-header history">
+                <span class="icon">&#9733;</span>
+                <span>HISTORY (Units 11-15)</span>
+            </div>
+            <div class="units-container">
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 11</span>
+                        Ancient Indian History - Sources & Prehistory
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Meaning of History</li>
+                            <li>Knowledge of Prehistoric Age in Indian Context</li>
+                            <li><strong>Sources of Ancient Indian History:</strong>
+                                <ul class="sub-list">
+                                    <li>Archaeological Source</li>
+                                    <li>Literary, Epic</li>
+                                    <li>Foreign Traveller's Account</li>
+                                    <li>Inscription</li>
+                                    <li>Numismatics</li>
+                                </ul>
+                            </li>
+                            <li>Hunter and food gatherer life of man</li>
+                            <li>Paleolithic, Chalcolithic culture</li>
+                            <li>Harappan culture (Indus Valley Civilization)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 12</span>
+                        Religious, Cultural & Philosophical Ideas & Dynasties
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Development and basic study of religious, cultural and philosophical ideas:
+                                <ul class="sub-list">
+                                    <li>Beginning of Vedic Era</li>
+                                    <li>Buddhism, Jainism, Vaishnavism, Shaivism</li>
+                                </ul>
+                            </li>
+                            <li>Sixteen Mahajanapadas</li>
+                            <li><strong>Ancient Indian Dynasties:</strong> Haryanka-Shishunaga, Maurya, Sunga, Shaka, Satavahana, Kushan, Gupta, Vardhana, Chera, Chola, Pandya, Chalukya, Pallava</li>
+                            <li>Rise of Rajputs - Gurjar Pratihara, Pal, Chandela, Rashtrakuta, Parmara, Kalchuri, Chauhan, Tomar, Gahadwal</li>
+                            <li>Muslim invasions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 13</span>
+                        Medieval History
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Sources of Medieval History</li>
+                            <li>Delhi Sultanate</li>
+                            <li>Vijayanagara Empire and Bahmani Kingdom</li>
+                            <li>Mughal Empire</li>
+                            <li>Rise of Marathas</li>
+                            <li><strong>Religious-Social Movements:</strong>
+                                <ul class="sub-list">
+                                    <li>Bhakti Movement</li>
+                                    <li>Sufi Movement</li>
+                                    <li>Sikhism</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 14</span>
+                        Modern Indian History & National Movement
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Sources of Modern Indian History</li>
+                            <li><strong>Arrival of Europeans in India:</strong> Portuguese, Dutch, French, British</li>
+                            <li>Establishment of British rule and their wars in Indian territories</li>
+                            <li>British policies, their economic and administrative structure</li>
+                            <li><strong>Indian Renaissance:</strong> Socio-religious movements, new geographical and scientific inventions, development and study of literature and art</li>
+                            <li><strong>Indian National Movement:</strong>
+                                <ul class="sub-list">
+                                    <li>Freedom Struggle of 1857</li>
+                                    <li>Tribal Movements and Major Tribal Revolts</li>
+                                    <li>Peasant Movements</li>
+                                    <li>Indian National Congress - Ideology and Program</li>
+                                    <li>Revolutionaries activities</li>
+                                    <li>Gandhian Mass Movement</li>
+                                    <li>National Movement Prominent personalities</li>
+                                    <li>Constitutional development and making of Indian constitution</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 15</span>
+                        World History
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>French Revolution</li>
+                            <li>Unification of Germany</li>
+                            <li>Unification of Italy</li>
+                            <li>Socialism in Europe</li>
+                            <li>Russian Revolution</li>
+                            <li>First World War</li>
+                            <li>League of Nations</li>
+                            <li>World Depression of 1929</li>
+                            <li>Second World War</li>
+                            <li>United Nations</li>
+                            <li>Nazism, Fascism</li>
+                            <li>Globalization, Industrialization</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ECONOMICS -->
+        <div class="subject-section">
+            <div class="subject-header economics">
+                <span class="icon">&#9733;</span>
+                <span>ECONOMICS (Units 16-20)</span>
+            </div>
+            <div class="units-container">
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 16</span>
+                        Economy and Its Evolution (1947-2020)
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Economy - meaning, types and features</li>
+                            <li>Agricultural development - Traditional, Green, Organic</li>
+                            <li>Industrial development - New Economic Policy 1991</li>
+                            <li>Business Structure</li>
+                            <li>International trade</li>
+                            <li>Rural Development</li>
+                            <li>Human Capital Formation</li>
+                            <li>Employment Growth</li>
+                            <li>Economic development (with reference to Madhya Pradesh)</li>
+                            <li>Five Year Plans, NITI Aayog</li>
+                            <li>Education, Health, Food Security and Consumer Protection</li>
+                            <li>GST (Goods and Services Tax)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 17</span>
+                        Sectors of Indian Economy
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Sectors of Indian economy - Primary, Secondary, Tertiary and their contribution in National Income</li>
+                            <li>National Income - meaning, related concepts and measurement</li>
+                            <li>Public Finance, Budget and its types</li>
+                            <li>Taxes and its types, Expenditure and its types</li>
+                            <li>GST (Goods and Services Tax)</li>
+                            <li>Open and closed economy</li>
+                            <li>Sustainable development and environmental conservation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 18</span>
+                        Money and Financial System
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Money - Meaning and types, function, importance, evils</li>
+                            <li>Exchange - Meaning and its types (Money and Barter system), Merits and Demerits</li>
+                            <li>Central Bank - Meaning, functions, importance</li>
+                            <li>Commercial Bank - Meaning, Functions, importance</li>
+                            <li>Determination of foreign exchange rate</li>
+                            <li>Supply of Money</li>
+                            <li>International Monetary Fund and NABARD</li>
+                            <li>Non-Banking financial institutions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 19</span>
+                        Theory of Consumer and Producer Behaviour
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Utility - Meaning, types, importance</li>
+                            <li>Cardinal utility Analysis (Law of diminishing marginal utility)</li>
+                            <li>Ordinal utility Analysis (Indifference curve analysis)</li>
+                            <li>Demand - Law, assumptions, exceptions, Giffin goods</li>
+                            <li>Substitute goods and supplementary goods</li>
+                            <li>Elasticity of Demand (Price, expenditure and cross elasticity)</li>
+                            <li>Supply - Meaning, Law, and elasticity of supply</li>
+                            <li>Consumption function - Law of variable Proportion, Laws of Return</li>
+                            <li>Revenue - meaning and its type</li>
+                            <li>Market - Meaning, classification and Price determination in perfect competition</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit">
+                    <div class="unit-title">
+                        <span class="unit-badge">UNIT 20</span>
+                        Uses of Statistics in Economics
+                    </div>
+                    <div class="unit-content">
+                        <ul class="arrow-list">
+                            <li>Statistics - meaning, function and uses</li>
+                            <li>Data Collection, Organisation, Presentation</li>
+                            <li>Measures of Central Tendency (Mean, Median, Mode)</li>
+                            <li>Measures of Dispersion - Range, Quartile deviation, Mean deviation, Standard deviation</li>
+                            <li>Correlation - meaning, types (Karl Pearson, Spearman), Methods</li>
+                            <li>Index number - meaning and construction:
+                                <ul class="sub-list">
+                                    <li>Consumer Price Index</li>
+                                    <li>Wholesale Price Index</li>
+                                    <li>Human Development Index</li>
+                                    <li>Industrial Production Index</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer">
+            <strong>MPESB - Madhya Pradesh Employee Selection Board, Bhopal</strong><br>
+            Secondary/Primary (Subject, Sports, Singing, Playing, Dance) Teacher Selection Test - 2024<br><br>
+            <strong>Prepared by ThunderStudy</strong>
+        </div>
+
+    </div>
+
+</body>
+</html>
